@@ -130,7 +130,7 @@ const display = async (fn) => {
 	data.forEach((element) => {
 		console.log(element);
 		const { name } = element;
-		return (list.innerHTML += `<p><a href="userDetails.html?id =${element.id}">${name}</a></p>`);
+		return (list.innerHTML += `<p><a href="userDetails.html?id=${element.name}">${name}</a></p>`);
 	});
 };
 let address = [];

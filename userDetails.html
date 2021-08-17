@@ -16,7 +16,9 @@
 		<title>Hello, world!</title>
 	</head>
 	<body>
-		<h1>Hello, world!</h1>
+		<div class="container">
+			<div class="row row-card-user"></div>
+		</div>
 
 		<!-- Optional JavaScript; choose one of the two! -->
 
@@ -27,7 +29,53 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
-			window.onload = () => {};
+			window.onload = async () => {
+				const query = new URLSearchParams(window.location.search).get('id');
+				console.log(query);
+
+				const users = async () => {
+					const res = await fetch('https://jsonplaceholder.typicode.com/users');
+					console.log(res);
+					const data = await res.json();
+					console.log(data);
+					const user = document.querySelector('.row-card-user');
+					user.innerHTML = '';
+					data.forEach((element) => {
+						if (String(query) === element.name) {
+							return (user.innerHTML = `<div class="card" style="width: 18rem">
+					
+					<div class="card-body">
+						<h5 class="card-title">${element.name}</h5>
+						<p class="card-text">
+							${element.email}
+							
+						</p>
+                        	<p class="card-text">
+							${element.phone}
+							
+						</p>
+                        	<p class="card-text">
+							${element.username}
+							
+						</p>
+                        	<p class="card-text">
+							${element.address.street}
+							
+						</p>
+                        	<p class="card-text">
+							${element.address.city}
+							
+						</p>
+                        
+						<a href="#" class="btn btn-primary">${element.website}</a>
+					</div>
+				</div>`);
+						}
+					});
+					return data;
+				};
+				await users();
+			};
 		</script>
 
 		<!-- Option 2: Separate Popper and Bootstrap JS -->
