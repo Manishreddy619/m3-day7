@@ -17,6 +17,31 @@
 	</head>
 	<body>
 		<h1>Hello, world!</h1>
+		<div class="container mt-5">
+			<div class="input-group">
+				<input
+					type="text"
+					class="form-control"
+					aria-label="Text input with dropdown button"
+					onkeyup="getUserInput(event)"
+				/>
+				<div class="input-group-append">
+					<select class="custom-select" id="inputGroupSelect01">
+						<option value="name">Name</option>
+						<option value="username">Username</option>
+						<option value="email">Email</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="container mt-5">
+			<div class="row all-user"></div>
+		</div>
+
+		<div class="container mt-5 username">
+			<div class="row all-user-name"></div>
+		</div>
 		<div>
 			<button type="button" class="btn btn-primary" onclick="display()">
 				Get Users
